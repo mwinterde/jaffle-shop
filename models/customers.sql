@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized = "table",
+        cluster_by = ["customer_id", "first_name", "last_name"],
+        hours_to_expiration = 1
+    )
+}}
+
 with customers as (
 
     select
