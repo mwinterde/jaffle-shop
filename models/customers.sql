@@ -1,31 +1,12 @@
-{{
-    config(
-        materialized = "table",
-        cluster_by = ["customer_id", "first_name", "last_name"],
-        hours_to_expiration = 1
-    )
-}}
-
 with customers as (
 
-    select
-        id as customer_id,
-        first_name,
-        last_name
-
-    from `dbt-tutorial`.jaffle_shop.customers
+    select * from {{ ref('stg_customers') }}
 
 ),
 
 orders as (
 
-    select
-        id as order_id,
-        user_id as customer_id,
-        order_date,
-        status
-
-    from `dbt-tutorial`.jaffle_shop.orders
+    select * from {{ ref('stg_orders') }}
 
 ),
 
