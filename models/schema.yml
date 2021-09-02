@@ -1,6 +1,18 @@
 version: 2
 
 models:
+  - name: orders
+    description: The total number of orders per day
+    columns:
+      - name: order_date
+        tests:
+          - unique
+          - not null
+      - name: number_of_orders
+        tests:
+          - unique
+          - not null
+
   - name: customers
     description: The enriched customer table
     columns:
